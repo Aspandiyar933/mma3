@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/index.ts",
-    "typeorm": "typeorm-ts-node-esm"
+    "dev": "ts-node-esm src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@uploadthing/react": "^7.3.0",
