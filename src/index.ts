@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import express from 'express';
+import cors from 'cors';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import { AppDataSource } from './db/data-source';
@@ -16,6 +17,12 @@ const startServer = async () => {
   });
 
   const app = express();
+  app.use(
+    cors({
+      origin: ['https://mma2.vercel.app'], // Allow your frontend origin
+      credentials: true, // Enable cookies and headers if needed
+    })
+  );
   const server = new ApolloServer({ schema });
 
   await server.start();
